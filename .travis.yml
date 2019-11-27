@@ -1,0 +1,39 @@
+os: linux
+dist: xenial
+language: python
+python: 3.7
+
+install:
+  - pip install -e ".[test]"
+
+script: pytest .
+
+jobs:
+  include:
+    - stage: formatting
+      name: black
+      install:
+        - pip install black
+      script:
+        - black --check .
+    - stage: formatting
+      name: isort
+      install:
+        - pip install "isort[pyproject]"
+      script:
+        - isort --check-only
+
+    - stage: test
+
+    - stage: deploy
+      if: tag IS present AND repo = glostis/pylint-elasticsearch-dsl
+      install: skip
+      script: skip
+      deploy:
+        - provider: pypi
+          user: glostis
+          password:
+            secure: "BDu8uBdcoy/PxKsLYjlthdfP1cUFiVWdT15ywGPBO5v4GlyD4wHpGWAdV1zuK3zeI9PmvwbC4ctqw7ucJE3rZ7whhohxT9Gf4CVQV7UEepwRbq3fQxM6W2gNLbSJJMjAbKZiZKrE/pm2kspDYCfI56JZOTNiF2ylChQ6hzRpZQuSTHXHkTFL0cRNMi+56tLft/vjorKZSY9Ga2t7P9CIYyisPAFhcK06/oDwV7G6gYYM13/Ct+2jImCdhhK3+tb1/WDecymkwnW1jyE+3iXNpoWuNaX/mF9hWShL2R1jaWQGFy+5TI4Ci0F+0lwXX2vBcfdkHo7Jc7zAEnNh3fJ8M7Kpce7pufQaLchMTuohNZjKH5acwAtNEjaM1Ltl2Fv1cD7+QcRe/diKuvEFTpsFm/c9ZhITbnmVDQaJeZM6cp3+QrLrdJ/flriIyrzXC1O6yTGjrrimVW4DiQ67N8BzXMjcqImnSn1M3ApioGtEqDOE85s7tlhPrbM6aHiR25Y+aEkFAlHwnboImJvrYAqak1i5bJbbh5u2eWkzD6NKeGRisPzaHPIVHVxktmnkjWsKRO8qwixHv45YXKwI9A2sByTYfDi6jlxJFZvmz7klFo9wJwcvFJG7Gpz9W80DGKAK8oQn7p+kh8KCF1bOE324KmH6CdS5xX0vT9vYom/f16Y="
+          distributions: sdist bdist_wheel
+          on:
+            tags: true
