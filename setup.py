@@ -17,11 +17,11 @@ def readme():
         return f.read()
 
 
-install_requires = []
+install_requires = ["astroid"]
 
 extras_require = {
     "dev": ["bump2version", "pre-commit"],
-    "test": ["pytest", "pytest-cov"],
+    "test": ["pytest", "pylint", "elasticsearch-dsl"],
 }
 
 setup(
