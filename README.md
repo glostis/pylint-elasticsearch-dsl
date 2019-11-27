@@ -1,6 +1,12 @@
 # pylint-elasticsearch-dsl
 
-`pylint` plugin for the `elasticsearch-dsl` package
+[`pylint`](https://www.pylint.org/) plugin for the
+[`elasticsearch-dsl`](https://elasticsearch-dsl.readthedocs.io/en/latest/) package
+
+This plugin is needed to help `pylint` understand the types of some objects of the `elasticsearch-dsl`
+package.
+
+See [this issue](https://github.com/PyCQA/pylint/issues/3258) for more details.
 
 ## Contributing
 
