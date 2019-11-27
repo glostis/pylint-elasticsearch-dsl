@@ -1,5 +1,9 @@
 # pylint-elasticsearch-dsl
 
+[![Build Status](https://travis-ci.com/glostis/pylint-elasticsearch-dsl.svg?branch=master)](https://travis-ci.com/glostis/pylint-elasticsearch-dsl)
+[![PyPI](https://img.shields.io/pypi/v/pylint-elasticsearch-dsl)](https://pypi.org/project/pylint-elasticsearch-dsl)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 [`pylint`](https://www.pylint.org/) plugin for the
 [`elasticsearch-dsl`](https://elasticsearch-dsl.readthedocs.io/en/latest/) package
 
