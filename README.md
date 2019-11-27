@@ -6,6 +6,14 @@
 This plugin is needed to help `pylint` understand the types of some objects of the `elasticsearch-dsl`
 package.
 
+## Installation
+
+```
+pip install pylint-elasticsearch-dsl
+```
+
+## Scope
+
 Currently, this plugin only patches the false positive `invalid-unary-operand-type` error
 that is triggered when writing for example:
 ```python
