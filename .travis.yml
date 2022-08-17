@@ -13,15 +13,15 @@ jobs:
     - stage: formatting
       name: black
       install:
-        - pip install black
+        - pip install black==22.6.0
       script:
         - black --check .
     - stage: formatting
       name: isort
       install:
-        - pip install "isort[pyproject]"
+        - pip install "isort[pyproject]==5.10.1"
       script:
-        - isort --check-only
+        - isort . --check --diff
 
     - stage: test
 
